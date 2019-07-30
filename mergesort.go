@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package algorithms
 
 // MergeSort mergesort implementation for a slice of integers
 func MergeSort(arr []int) []int {
@@ -42,11 +38,4 @@ func MergeSort(arr []int) []int {
 	}
 
 	return result
-}
-
-func main() {
-	fmt.Printf("Mergesort\n")
-	arr := []int{12, 1, 2, 5, 3, 4, 6, 7, 9, 8, 11, 10}
-	arr = MergeSort(arr)
-	PrintArray(arr)
 }

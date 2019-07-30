@@ -1,4 +1,4 @@
-package main
+package algorithms
 
 // BubbleSort bubble sort implementation
 func BubbleSort(arr []int) []int {
