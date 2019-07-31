@@ -26,8 +26,8 @@ func (l *LinkedList) AddFront(data int) {
 	l.size++
 }
 
-// GetHead returns the first element
-func (l LinkedList) GetHead() int {
+// GetFirst returns the first element
+func (l LinkedList) GetFirst() int {
 	if l.head == nil {
 		return 0
 	}

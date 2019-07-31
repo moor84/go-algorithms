@@ -15,14 +15,14 @@ func TestLinkedList_AddFront(t *testing.T) {
 	}
 }
 
-func TestLinkedList_GetHead(t *testing.T) {
+func TestLinkedList_GetFirst(t *testing.T) {
 	list := LinkedList{}
-	if !reflect.DeepEqual(list.GetHead(), 0) {
+	if list.GetFirst() != 0 {
 		t.Error()
 	}
 	list.AddFront(1)
 	list.AddFront(3)
-	if !reflect.DeepEqual(list.GetHead(), 3) {
+	if list.GetFirst() != 3 {
 		t.Error()
 	}
 }
