@@ -105,3 +105,33 @@ func TestLinkedList_DeleteValue(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestLinkedList_Reverse(t *testing.T) {
+	list := LinkedList{}
+	list.AddBack(1)
+	list.AddBack(3)
+	list.AddBack(5)
+	list.AddBack(7)
+	if !reflect.DeepEqual(list.GetArray(), []int{1, 3, 5, 7}) {
+		t.Error()
+	}
+	list.Reverse()
+	if !reflect.DeepEqual(list.GetArray(), []int{7, 5, 3, 1}) {
+		t.Error()
+	}
+}
+
+func TestLinkedList_DetectLoop(t *testing.T) {
+	list := LinkedList{}
+	list.AddBack(1)
+	list.AddBack(3)
+	list.AddBack(5)
+	list.AddBack(7)
+	if list.DetectLoop() != nil {
+		t.Error()
+	}
+	list.head.next.next.next = list.head.next
+	if list.DetectLoop().data != 5 {
+		t.Error()
+	}
+}

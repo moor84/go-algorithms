@@ -105,3 +105,31 @@ func (l *LinkedList) DeleteValue(data int) bool {
 	}
 	return false
 }
+
+// Reverse - reverse the linked list
+func (l *LinkedList) Reverse() {
+	var prev *Node
+	var next *Node
+	current := l.head
+	for current != nil {
+		next = current.next
+		current.next = prev
+		prev = current
+		current = next
+	}
+	l.head = prev
+}
+
+// DetectLoop using Floyd’s Cycle-Finding Algorithm
+func (l *LinkedList) DetectLoop() *Node {
+	slow := l.head
+	fast := l.head
+	for slow != nil && fast != nil && fast.next != nil {
+		slow = slow.next
+		fast = fast.next.next
+		if slow == fast {
+			return slow
+		}
+	}
+	return nil
+}
