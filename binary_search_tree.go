@@ -153,3 +153,24 @@ func (bst *BinarySearchTree) PreOrder() []int {
 func (bst *BinarySearchTree) PostOrder() []int {
 	return bst.traverseKeys(bst.postOrderNodes)
 }
+
+func (bst *BinarySearchTree) buildTree(nodes []*BinarySearchTreeNode, start int, end int) *BinarySearchTreeNode {
+	if start > end {
+		return nil
+	}
+
+	// Get the middle element and make it root
+	mid := (start + end) / 2
+	node := nodes[mid]
+
+	node.left = bst.buildTree(nodes, start, mid-1)
+	node.right = bst.buildTree(nodes, mid+1, end)
+	return node
+}
+
+// Balance - convert the binary search tree to a balanced BST
+func (bst *BinarySearchTree) Balance() {
+	nodes := make([]*BinarySearchTreeNode, 0)
+	bst.inOrderNodes(bst.root, &nodes)
+	bst.root = bst.buildTree(nodes, 0, len(nodes)-1)
+}

@@ -136,3 +136,21 @@ func TestBinarySearchTree_PostOrder(t *testing.T) {
 		t.Errorf("res = %v", res)
 	}
 }
+
+func TestBinarySearchTree_Balance(t *testing.T) {
+	bst := BinarySearchTree{}
+	bst.Insert(4, "bla")
+	bst.Insert(3, "bla")
+	bst.Insert(2, "bla")
+	bst.Insert(1, "bla")
+
+	bst.Balance()
+
+	if bst.root.key != 2 {
+		t.Errorf("Balanced tree, root = %d", bst.root.key)
+	}
+	res := bst.InOrder()
+	if !reflect.DeepEqual(res, []int{1, 2, 3, 4}) {
+		t.Errorf("Balanced tree, res = %v", res)
+	}
+}
